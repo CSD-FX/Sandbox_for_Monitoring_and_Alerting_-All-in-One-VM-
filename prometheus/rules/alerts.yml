@@ -1,0 +1,38 @@
+groups:
+  - name: node_rules
+    rules:
+      - alert: HostHighCPU
+        expr: avg(rate(node_cpu_seconds_total{mode!="idle"}[5m])) by (instance) > 0.8
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: High CPU usage on {{ $labels.instance }}
+          description: Average CPU non-idle > 80% for 5m
+
+      - alert: HostHighMemory
+        expr: (node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes) / node_memory_MemTotal_bytes > 0.85
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: High memory usage on {{ $labels.instance }}
+          description: Memory usage > 85% for 5m
+
+      - alert: HostHighDiskUsage
+        expr: (node_filesystem_size_bytes{fstype!~"tmpfs|overlay"} - node_filesystem_free_bytes{fstype!~"tmpfs|overlay"}) / node_filesystem_size_bytes{fstype!~"tmpfs|overlay"} > 0.85
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: High disk usage on {{ $labels.instance }}
+          description: Disk usage > 85% for 10m
+
+      - alert: InstanceDown
+        expr: up == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: Instance {{ $labels.instance }} down
+          description: Target has been unreachable for 2m

@@ -45,16 +45,10 @@ sudo apt-get install -y git
 ```
 
 ## Step 3: Get this project onto the instance
-Option A: Clone your fork
+Clone your fork
 ```bash
-git clone https://github.com/<you>/devops-monitoring-sandbox-ec2.git
-cd devops-monitoring-sandbox-ec2
-```
-Option B: SCP the folder from your machine
-```bash
-scp -i /path/to/key.pem -r ./devops-monitoring-sandbox-ec2 ubuntu@<EC2_PUBLIC_IP>:/home/ubuntu/
-ssh -i /path/to/key.pem ubuntu@<EC2_PUBLIC_IP>
-cd devops-monitoring-sandbox-ec2
+git clone https://github.com/CSD-FX/Sandbox_for_Monitoring_and_Alerting_-All-in-One-VM-.git
+cd Sandbox_for_Monitoring_and_Alerting_-All-in-One-VM-
 ```
 
 ## Step 4: Install the stack

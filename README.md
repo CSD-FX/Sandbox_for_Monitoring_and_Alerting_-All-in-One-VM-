@@ -130,17 +130,3 @@ promtool check rules /etc/prometheus/rules/*.yml
 ```bash
 sudo bash scripts/uninstall.sh
 ```
-
-## Versions
-- Prometheus: default 2.53.1
-- Node Exporter: default 1.8.1
-- Alertmanager: default 0.27.0
-- Grafana OSS: latest from repo (11.x)
-
-## Screenshots to capture (deliverable)
-- Prometheus targets page up
-- Alertmanager UI showing routes
-- Grafana dashboard with host metrics
-
----
-MIT License.
